@@ -8,10 +8,17 @@ class AuthForm extends Component {
       password: ''
     }
   }
+
+  onSubmit(e){
+    e.preventDefault();
+    this.props.submitMutation(this.state);
+  }
+
   render() {
+    const {submitMutation} = this.props;
     return (
       <div className="row">
-        <form className="col s4">
+        <form className="col s4" onSubmit={this.onSubmit.bind(this)}>
         <div className="input-field">
           <input placeholder="email" onChange={(e) => this.setState({ email: e.target.value })}/>
         </div>
